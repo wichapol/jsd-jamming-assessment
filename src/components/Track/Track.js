@@ -3,12 +3,18 @@ import './Track.css';
 
 function Track(props) {
 
-  function renderAction() {
+  function RenderAction() {
     if (props.isRemoval) {
       return  <button className="Track-action">-</button> 
-    } else { return <button className="Track-action">+</button> 
+    } else { 
+      return <button className="Track-action" onClick={AddTrack}>+</button> 
     };
   }
+  
+  function AddTrack() {
+    props.onAdd(props.track);
+  }
+   
 
   return (
     <div className="Track">
@@ -16,7 +22,7 @@ function Track(props) {
         <h3> {props.track.name} </h3>
         <p> {props.track.artist} | {props.track.album} </p>
       </div>
-      {renderAction()}
+      {RenderAction()}
     </div>
   );
 }
