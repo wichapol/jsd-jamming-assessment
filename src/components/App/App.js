@@ -17,12 +17,19 @@ import Playlist from '../Playlist/Playlist';
     if (playlistTracks.find(savedTrack => savedTrack.id === track.id)){
       return;
     } 
-    
+
     setPlaylistTracks((prev) => {
       return [...prev, track];
     }) 
   
   }
+
+  function RemoveTrack(track) {
+    setPlaylistTracks((prev) => {
+      return prev.filter((currentTrack) => currentTrack.id  !== track.id);
+    })
+  }
+
 
   return (
     <div>
@@ -34,7 +41,8 @@ import Playlist from '../Playlist/Playlist';
                          onAdd={AddTrack}   
           />
           <Playlist playlistName = {playlistName}
-                    playlistTracks = {playlistTracks} />
+                    playlistTracks = {playlistTracks}
+                    onRemove={RemoveTrack} />
         </div>
       </div>
     </div>
