@@ -19,7 +19,6 @@ function Track(props) {
     props.onRemove(props.track);
   }
    
-
   return (
     <div className="Track">
       <div className="Track-information">

@@ -30,6 +30,9 @@ import Playlist from '../Playlist/Playlist';
     })
   }
 
+  function UpdatePlaylistName(name) {
+    setPlaylistName(name);
+  }
 
   return (
     <div>
@@ -42,7 +45,8 @@ import Playlist from '../Playlist/Playlist';
           />
           <Playlist playlistName = {playlistName}
                     playlistTracks = {playlistTracks}
-                    onRemove={RemoveTrack} />
+                    onRemove={RemoveTrack}
+                    onNameChange={UpdatePlaylistName} />
         </div>
       </div>
     </div>
