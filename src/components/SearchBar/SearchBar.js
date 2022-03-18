@@ -6,7 +6,7 @@ function SearchBar(props) {
 
   const [ term, setTerm ] = useState('')
 
-  function Search() {
+  function search() {
     props.onSearch(term)
   }
 
@@ -19,7 +19,7 @@ function SearchBar(props) {
       <input placeholder="Enter A Song, Album, or Artist" 
              onChange={handleTermChange} />
       <button className="SearchButton"
-              onClick={Search}>SEARCH</button>
+              onClick={search}>SEARCH</button>
     </div>
   );
 }
