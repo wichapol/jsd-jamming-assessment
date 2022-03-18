@@ -6,9 +6,7 @@ import Playlist from '../Playlist/Playlist';
 import Spotify from '../../utils/Spotify';
 
  function App() {
-  const [ results, setResults ] = useState([{ name: 'name1', artist: 'artist1', album: 'album1',id: 1},
-  { name: 'name2', artist: 'artist2', album: 'album2',id: 2 }
-  ]);
+  const [ results, setResults ] = useState([]);
   const [ playlistName, setPlaylistName] = useState('New Playlist');
   const [ playlistTracks, setPlaylistTracks] = useState([]);
     // console.log(results)
@@ -35,11 +33,15 @@ import Spotify from '../../utils/Spotify';
   }
 
   function SavePlaylist() {
-    Spotify.savePlaylist()
     const trackURIs = playlistTracks.map(track => track.uri)
+    Spotify.savePlaylist( playlistName, trackURIs).then(() => {
+      setPlaylistName('New Playlist');
+      setPlaylistTracks([]);
+    })
   }
 
   function Search(term) {
+    Spotify.getAccessToken()
     Spotify.search(term).then(results => {
       setResults(results)
     })
