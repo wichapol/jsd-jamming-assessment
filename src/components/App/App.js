@@ -3,14 +3,14 @@ import './App.css';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults'
 import Playlist from '../Playlist/Playlist';
+import Spotify from '../../utils/Spotify';
 
  function App() {
   const [ results, setResults ] = useState([{ name: 'name1', artist: 'artist1', album: 'album1',id: 1},
   { name: 'name2', artist: 'artist2', album: 'album2',id: 2 }
   ]);
   const [ playlistName, setPlaylistName] = useState('New Playlist');
-  const [ playlistTracks, setPlaylistTracks] = useState([{ name: 'playlistName1', artist: 'playlistArtist1', album: 'playlistAlbum1',id: 3}, 
-  { name: 'playlistName2', artist: 'playlistArtist2', album: 'playlistAlbum2', id: 4}]);
+  const [ playlistTracks, setPlaylistTracks] = useState([]);
     // console.log(results)
   function AddTrack(track) {
 
@@ -35,11 +35,14 @@ import Playlist from '../Playlist/Playlist';
   }
 
   function SavePlaylist() {
+    Spotify.savePlaylist()
     const trackURIs = playlistTracks.map(track => track.uri)
   }
 
   function Search(term) {
-    console.log(term)
+    Spotify.search(term).then(results => {
+      setResults(results)
+    })
   }
 
   return (
