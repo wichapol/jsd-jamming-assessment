@@ -5,17 +5,17 @@ function Track(props) {
 
   function RenderAction() {
     if (props.isRemoval) {
-      return  <button className="Track-action" onClick={OnRemove}>-</button> 
+      return  <button className="Track-action" onClick={onRemove}>-</button> 
     } else { 
-      return <button className="Track-action" onClick={AddTrack}>+</button> 
+      return <button className="Track-action" onClick={addTrack}>+</button> 
     };
   }
   
-  function AddTrack() {
+  function addTrack() {
     props.onAdd(props.track);
   }
 
-  function OnRemove() {
+  function onRemove() {
     props.onRemove(props.track);
   }
    

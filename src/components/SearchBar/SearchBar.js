@@ -10,14 +10,14 @@ function SearchBar(props) {
     props.onSearch(term)
   }
 
-  function HandleTermChange(e) {
+  function handleTermChange(e) {
     setTerm(e.target.value)
   }
 
   return (
     <div className="SearchBar">
       <input placeholder="Enter A Song, Album, or Artist" 
-             onChange={HandleTermChange} />
+             onChange={handleTermChange} />
       <button className="SearchButton"
               onClick={Search}>SEARCH</button>
     </div>

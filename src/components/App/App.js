@@ -10,7 +10,7 @@ import Spotify from '../../utils/Spotify';
   const [ playlistName, setPlaylistName] = useState('New Playlist');
   const [ playlistTracks, setPlaylistTracks] = useState([]);
     // console.log(results)
-  function AddTrack(track) {
+  function addTrack(track) {
 
     if (playlistTracks.find(savedTrack => savedTrack.id === track.id)){
       return;
@@ -22,17 +22,17 @@ import Spotify from '../../utils/Spotify';
   
   }
 
-  function RemoveTrack(track) {
+  function removeTrack(track) {
     setPlaylistTracks((prev) => {
       return prev.filter((currentTrack) => currentTrack.id  !== track.id);
     })
   }
 
-  function UpdatePlaylistName(name) {
+  function updatePlaylistName(name) {
     setPlaylistName(name);
   }
 
-  function SavePlaylist() {
+  function savePlaylist() {
     const trackURIs = playlistTracks.map(track => track.uri)
    
 
@@ -43,7 +43,7 @@ import Spotify from '../../utils/Spotify';
     })
   }
 
-  function Search(term) {
+  function search(term) {
     Spotify.getAccessToken()
     Spotify.search(term).then(results => {
       setResults(results)
@@ -54,15 +54,15 @@ import Spotify from '../../utils/Spotify';
     <div>
       <h1>Ja<span className="highlight">mmm</span>ing</h1>
       <div className="App">
-        <SearchBar onSearch={Search} />
+        <SearchBar onSearch={search} />
         <div className="App-playlist">
           <SearchResults searchResults={results} 
-                         onAdd={AddTrack}  />
+                         onAdd={addTrack}  />
           <Playlist playlistName = {playlistName}
                     playlistTracks = {playlistTracks}
-                    onRemove={RemoveTrack}
-                    onNameChange={UpdatePlaylistName} 
-                    onSave={SavePlaylist} />
+                    onRemove={removeTrack}
+                    onNameChange={updatePlaylistName} 
+                    onSave={savePlaylist} />
         </div>
       </div>
     </div>
