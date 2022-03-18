@@ -34,19 +34,27 @@ import Playlist from '../Playlist/Playlist';
     setPlaylistName(name);
   }
 
+  function SavePlaylist() {
+    const trackURIs = playlistTracks.map(track => track.uri)
+  }
+
+  function Search(term) {
+    console.log(term)
+  }
+
   return (
     <div>
       <h1>Ja<span className="highlight">mmm</span>ing</h1>
       <div className="App">
-        <SearchBar />
+        <SearchBar onSearch={Search} />
         <div className="App-playlist">
           <SearchResults searchResults={results} 
-                         onAdd={AddTrack}   
-          />
+                         onAdd={AddTrack}  />
           <Playlist playlistName = {playlistName}
                     playlistTracks = {playlistTracks}
                     onRemove={RemoveTrack}
-                    onNameChange={UpdatePlaylistName} />
+                    onNameChange={UpdatePlaylistName} 
+                    onSave={SavePlaylist} />
         </div>
       </div>
     </div>
