@@ -8,7 +8,7 @@ function Track(props) {
       return <button className="Track-action" onClick={onRemove}>-</button> 
     } else { 
       return <button className="Track-action" onClick={addTrack}>+</button> 
-    };
+    }
   }
   
   function addTrack() {
