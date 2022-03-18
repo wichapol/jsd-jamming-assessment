@@ -34,9 +34,12 @@ import Spotify from '../../utils/Spotify';
 
   function SavePlaylist() {
     const trackURIs = playlistTracks.map(track => track.uri)
+   
+
     Spotify.savePlaylist( playlistName, trackURIs).then(() => {
       setPlaylistName('New Playlist');
       setPlaylistTracks([]);
+      
     })
   }
 

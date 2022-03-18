@@ -11,7 +11,7 @@ function Playlist(props) {
 
   return (
     <div className="Playlist">
-      <input Value={props.playlistName}
+      <input value={props.playlistName}
              onChange={handleNameChange} />
       <TrackList tracks ={props.playlistTracks}
                  onRemove ={props.onRemove}

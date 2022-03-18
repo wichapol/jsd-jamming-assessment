@@ -46,6 +46,7 @@ const Spotify = {
   },
 
   async savePlaylist(name, trackIds) {
+    console.log({name, trackIds})
     if (Array.isArray(trackIds) && trackIds.length) {
       const createPlaylistUrl = `https://api.spotify.com/v1/me/playlists`;
       const response = await fetch(createPlaylistUrl, {
@@ -70,7 +71,7 @@ const Spotify = {
             Authorization: `Bearer ${accessToken}`,
           },
           body: JSON.stringify({
-            uris: trackIds.map((id) => 'spotify:track:'.concat(id)),
+            uris: trackIds.map((id) => id),
           }),
         });
       }
